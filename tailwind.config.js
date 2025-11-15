@@ -14,6 +14,8 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                mulish: ['Mulish', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
             },
         },
     },
