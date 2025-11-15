@@ -1,0 +1,8 @@
+<svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44.000000" height="44.000000" fill="none" customFrame="#000000">
+	<g id="иконка выход">
+		<rect id="Rectangle 122" width="44.000000" height="44.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)" />
+		<path id="Vector" d="M8.8 17.7778L0 17.7778L0 20L8.8 20C10.01 20 11 19 11 17.7778L11 2.22222C11 1 10.01 0 8.8 0L0 0L0 2.22222L8.8 2.22222L8.8 17.7778Z" fill="rgb(144,154,180)" fill-rule="nonzero" transform="matrix(-1,0,0,1,24,12)" />
+		<path id="Vector" d="M26.1 17L25.113 18.0071L28.319 21.2857L21 21.2857L21 22.7143L28.319 22.7143L25.106 25.9929L26.1 27L31 22L26.1 17Z" fill="rgb(144,154,180)" fill-rule="nonzero" />
+		<path id="Vector" d="M25.113 18.0071L28.319 21.2857L21 21.2857L21 22.7143L28.319 22.7143L25.106 25.9929L26.1 27L31 22L26.1 17L25.113 18.0071Z" fill-rule="nonzero" stroke="rgb(144,154,180)" stroke-width="1" />
+	</g>
+</svg>
