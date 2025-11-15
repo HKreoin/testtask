@@ -1,8 +1,8 @@
 <script setup>
 import Layout from '@/Layouts/Layout.vue';
 import YandexMapsIcon from '@/assets/yandex_maps.svg';
-import StarIcon from '@/assets/star.svg';
-import StarEmptyIcon from '@/assets/star_empty.svg';
+import ReviewCard from '@/Components/ReviewCard.vue';
+import RatingSummaryCard from '@/Components/RatingSummaryCard.vue';
 
 const sampleReviews = [
     {
@@ -60,62 +60,24 @@ const averageRating = 4.8;
                 </div>
 
                 <div class="mt-[9px] grid grid-cols-4 gap-[20px]">
-                    <aside class="col-span-4 xl:col-span-1 xl:order-last order-first">
-                        <div class="card flex h-[155px] flex-col justify-between p-6">
-                            <div class="flex items-center gap-4">
-                                <p class="rating-value-text">
-                                    {{ averageRating.toFixed(1) }}
-                                </p>
-                                <div class="flex items-center gap-1">
-                                    <img
-                                        v-for="n in 5"
-                                        :key="`star-${n}`"
-                                        :src="n <= Math.round(averageRating) ? StarIcon : StarEmptyIcon"
-                                        alt="Rating star"
-                                        class="h-4 w-4"
-                                    />
-                                </div>
-                            </div>
-                            <div class="h-[2px] w-full border border-[#F1F4F7]" />
-                            <div>
-                                <p class="text-dark-12-bold whitespace-nowrap">
-                                    Всего отзывов: {{ totalReviews }}
-                                </p>
-                            </div>
-                        </div>
-                    </aside>
+                    <div class="col-span-4 xl:col-span-1 xl:order-last order-first">
+                        <RatingSummaryCard
+                            :average-rating="averageRating"
+                            :total-reviews="totalReviews"
+                        />
+                    </div>
                     <div class="col-span-4 xl:col-span-3 space-y-4">
-                        <article
+                        <ReviewCard
                             v-for="review in sampleReviews"
                             :key="review.id"
-                            class="review-card space-y-3 px-[17px] py-[19px]"
-                        >
-                            <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                                <div class="flex items-center gap-2 text-dark-12-bold">
-                                    <span>{{ review.date }} · {{ review.time }}</span>
-                                    <span class="inline-flex items-center gap-1 text-dark-12-bold">
-                                    <img :src="YandexMapsIcon" alt="location" class="h-4 w-4" />
-                                        <span>{{ review.place }}</span>
-                                    </span>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <img
-                                        v-for="n in 5"
-                                        :key="`card-star-${review.id}-${n}`"
-                                        :src="n <= review.rating ? StarIcon : StarEmptyIcon"
-                                        alt="Rating"
-                                        class="h-4 w-4"
-                                    />
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-dark-12-bold">{{ getDisplayName(review.author) }}</span>
-                                <span class="review-phone-text">{{ review.phone }}</span>
-                            </div>
-                            <p class="text-black-12-normal">
-                                {{ review.text }}
-                            </p>
-                        </article>
+                            :date="review.date"
+                            :time="review.time"
+                            :place="review.place"
+                            :rating="review.rating"
+                            :author="review.author"
+                            :phone="review.phone"
+                            :text="review.text"
+                        />
                     </div>
                 </div>
             </section>
