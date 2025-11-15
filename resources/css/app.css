@@ -1,3 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&family=Inter:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-white font-mulish text-[#252733];
+    }
+}
+
+@layer components {
+
+    .text-12 {
+        @apply text-[12px] leading-[15px];
+    }
+
+    .text-dark-12 {
+        @apply text-12 text-[#363740];
+    }
+
+    .text-dark-12-bold {
+        @apply text-dark-12 font-bold;
+    }
+
+    .text-gray-12 {
+        @apply text-12 text-[#6C757D];
+    }
+
+    .text-black-12 {
+        @apply text-12 text-black;
+    }
+
+    .text-black-12-normal {
+        @apply text-black-12 font-normal;
+    }
+
+    .heading-m {
+        @apply text-[16px] font-semibold leading-5 tracking-[0.2px] text-[#252733];
+    }
+
+    .menu-text {
+        @apply text-dark-12 font-medium;
+    }
+
+    .form-hint {
+        @apply text-gray-12 font-semibold tracking-[0.2px];
+    }
+
+    .form-example {
+        @apply text-black-12 text-[#788397] underline;
+    }
+
+    .btn-primary {
+        @apply flex h-[25px] w-[128px] items-center justify-center rounded-md bg-[#339AF0] font-inter text-[14px] font-semibold leading-[17px] text-white transition hover:bg-[#1d7fd4] disabled:opacity-60;
+    }
+
+    .card-base {
+        @apply border border-[#DCE4EA];
+    }
+
+    .card {
+        @apply card-base rounded-2xl bg-white shadow-sm min-h-[155px];
+    }
+
+    .review-card {
+        @apply card-base rounded-[12px] bg-[#F6F8FA];
+        box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.02);
+    }
+
+    .review-phone-text {
+        @apply text-[10px] font-bold leading-[13px] text-[#363740];
+    }
+
+    .rating-value-text {
+        @apply text-[40px] font-medium leading-[50px] text-[#363740];
+    }
+}
