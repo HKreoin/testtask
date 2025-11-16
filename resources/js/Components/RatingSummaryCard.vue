@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="card flex h-[155px] flex-col justify-between p-6">
+    <div class="card relative flex h-[155px] flex-col px-[18px] pt-4">
         <div class="flex items-center gap-4">
             <p class="rating-value-text">
                 {{ props.averageRating.toFixed(1) }}
@@ -30,8 +30,8 @@ const props = defineProps({
                 />
             </div>
         </div>
-        <div class="h-[2px] w-full border border-[#F1F4F7]" />
-        <div>
+        <div class="pointer-events-none absolute top-1/2 -translate-y-1/2 bg-[#F1F4F7] h-[2px] left-[16px] right-[7px]" />
+        <div class="mt-[17px]">
             <p class="text-dark-12-bold whitespace-nowrap">
                 Всего отзывов: {{ props.totalReviews }}
             </p>

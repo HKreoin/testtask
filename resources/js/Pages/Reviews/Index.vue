@@ -3,44 +3,42 @@ import Layout from '@/Layouts/Layout.vue';
 import YandexMapsIcon from '@/assets/yandex_maps.svg';
 import ReviewCard from '@/Components/ReviewCard.vue';
 import RatingSummaryCard from '@/Components/RatingSummaryCard.vue';
+import { computed } from 'vue';
 
-const sampleReviews = [
+const fallbackReviews = [
     {
         id: 1,
-        author: 'Иван',
-        rating: 4,
-        date: '12.11.2025',
-        time: '14:35',
-        place: 'Daily Grow, Невский 14',
-        phone: '+7 (900) 123-45-67',
-        text: 'Так, с чего начать... Разнообразная алкогольная продукция, множество закусок и обычных блюд. Кухня вкусная и Разнообразная, от супа и салатов до мясных продуктов. Персонал молодые девушки, общительная и доброжелательные, всегда подскажут, вовремя принесут и вызовут такси. Отдыхали на летней веранде, свежо и тепло, в общем самое то в жаркую погоду. Сами залы не сильно рассмотрел, но видел что они удобные и просторные. ',
-    },
-    {
-        id: 2,
-        author: 'Мария',
-        rating: 4,
-        date: '10.11.2025',
-        time: '11:20',
-        place: 'Daily Grow, Пушкина 8',
-        phone: '+7 (921) 555-22-11',
-        text: 'Еда вкусная, но хотелось бы чуть быстрее обслуживание. В целом довольна.',
-    },
-    {
-        id: 3,
-        author: 'Алексей',
-        rating: 5,
-        date: '05.11.2025',
-        time: '09:50',
-        place: 'Daily Grow, Тверская 5',
-        phone: '+7 (911) 777-88-00',
-        text: 'Лучшее место для встреч в центре города. Всегда свежий кофе и десерты.',
+        author: 'Нет данных',
+        rating: 0,
+        date: null,
+        time: null,
+        place: '—',
+        phone: '',
+        text: 'Добавьте ссылку в настройках, чтобы мы смогли загрузить реальные отзывы.',
     },
 ];
 
-const getDisplayName = (name) => name;
+const props = defineProps({
+    reviews: {
+        type: Array,
+        default: () => [],
+    },
+    summary: {
+        type: Object,
+        default: () => ({ average: null, count: 0 }),
+    },
+    profileExists: {
+        type: Boolean,
+        default: false,
+    },
+});
 
-const totalReviews = 162;
-const averageRating = 4.8;
+const displayedReviews = computed(() =>
+    props.reviews.length ? props.reviews : fallbackReviews,
+);
+
+const averageRating = computed(() => props.summary?.average ?? 0);
+const totalReviews = computed(() => props.summary?.count ?? 0);
 </script>
 
 <template>
@@ -62,13 +60,13 @@ const averageRating = 4.8;
                 <div class="mt-[9px] grid grid-cols-4 gap-[20px]">
                     <div class="col-span-4 xl:col-span-1 xl:order-last order-first">
                         <RatingSummaryCard
-                            :average-rating="averageRating"
-                            :total-reviews="totalReviews"
+                            :average-rating="Number(averageRating)"
+                            :total-reviews="Number(totalReviews)"
                         />
                     </div>
                     <div class="col-span-4 xl:col-span-3 space-y-4">
                         <ReviewCard
-                            v-for="review in sampleReviews"
+                            v-for="review in displayedReviews"
                             :key="review.id"
                             :date="review.date"
                             :time="review.time"
@@ -78,6 +76,13 @@ const averageRating = 4.8;
                             :phone="review.phone"
                             :text="review.text"
                         />
+                        <div
+                            v-if="!props.profileExists"
+                            class="rounded-[12px] border border-dashed border-[#DCE4EA] bg-white px-6 py-5 text-sm text-[#6C757D]"
+                        >
+                            Добавьте ссылку на карточку в разделе “Настройки”, чтобы мы автоматически
+                            получили реальные отзывы и рейтинг из Яндекс Карт.
+                        </div>
                     </div>
                 </div>
             </section>
