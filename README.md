@@ -1,5 +1,10 @@
 # Отзывы из Яндекс.Карт (Laravel + Vue)
 
+https://khabdev.site
+
+email: khabdev@example.com
+password: hfyljvysqgfhjkm
+
 Короткая инструкция по установке и запуску проекта.
 
 ## Требования
