@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\YandexProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,13 +27,10 @@ Route::get('/dashboard', function () {
     ->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/reviews', function () {
-        return Inertia::render('Reviews/Index');
-    })->name('reviews.index');
+    Route::get('/reviews', ReviewController::class)->name('reviews.index');
 
-    Route::get('/settings', function () {
-        return Inertia::render('Settings/Index');
-    })->name('settings.index');
+    Route::get('/settings', [YandexProfileController::class, 'edit'])->name('settings.index');
+    Route::post('/settings/yandex', [YandexProfileController::class, 'store'])->name('settings.store');
 });
 
 Route::middleware('auth')->group(function () {
