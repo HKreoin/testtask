@@ -45,7 +45,7 @@ const totalReviews = computed(() => props.summary?.count ?? 0);
     <Layout active-section="reviews">
         <template #header>Отзывы</template>
 
-            <section class="pl-[26px] pt-[17px] pr-8" aria-label="Последние отзывы">
+            <section class="px-4 md:pl-[26px] pt-[17px] md:pr-8" aria-label="Последние отзывы">
                 <div class="flex h-6 w-28 items-center gap-1.5 rounded-[8px] border border-[#DCE4EA] bg-white pl-1.5">
                     <img
                         :src="YandexMapsIcon"

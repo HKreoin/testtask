@@ -25,13 +25,13 @@ const submit = () => {
     <Layout active-section="settings">
         <template #header>Настройки</template>
 
-        <section class="ps-[35px] pt-[18px]">
+        <section class="px-4 md:ps-[35px] pt-[18px]">
             <h2 class="heading-m">Подключить Яндекс</h2>
 
             <div class="mt-[15px] space-y-1">
                 <p class="form-hint">Укажите ссылку на Яндекс, пример</p>
                 <a
-                    class="form-example"
+                    class="form-example break-all"
                     href="https://yandex.ru/maps/org/samoye_populyarnoye_kafe/1010501395/reviews/"
                     target="_blank"
                     rel="noreferrer"
@@ -48,7 +48,7 @@ const submit = () => {
                         type="url"
                         name="reviews_link"
                         placeholder="https://yandex.ru/maps/org/..."
-                        class="h-[24px] w-[480px] rounded-md border border-[#DCE4EA] bg-white px-4 text-[12px] text-[#788397] underline shadow-sm focus:border-[#339AF0] focus:ring-[#339AF0]"
+                        class="h-[24px] w-full md:w-[480px] rounded-md border border-[#DCE4EA] bg-white px-4 text-[12px] text-[#788397] underline shadow-sm focus:border-[#339AF0] focus:ring-[#339AF0]"
                         @click="$event.target.select()"
                         @mouseup.prevent
                         required
